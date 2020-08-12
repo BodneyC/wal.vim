@@ -5,7 +5,14 @@
 " Last Change: 2017/10/28 12:21:04.
 " =============================================================================
 
-if (g:wal_colors == []) | call WalSetRgbColors() | endif
+if (! exists('g:wal_colors'))
+  let s:fn = expand('$HOME/.cache/wal/colors')
+  if ! filereadable(s:fn)
+    echoe "[" . s:fn . "] not readable"
+    finish
+  endif
+  let g:wal_colors = readfile(s:fn)
+endif
 
 let s:black = [ g:wal_colors[8], 232 ]
 let s:gray = [ g:wal_colors[0], 0 ]

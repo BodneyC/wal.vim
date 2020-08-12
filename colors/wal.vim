@@ -15,7 +15,14 @@ let g:colors_name = 'wal'
 
 " highlight groups {{{
 
-if (g:wal_colors == []) | call WalSetRgbColors() | endif
+if (! exists('g:wal_colors'))
+  let s:fn = expand('$HOME/.cache/wal/colors')
+  if ! filereadable(s:fn)
+    echoe "[" . s:fn . "] not readable"
+    finish
+  endif
+  let g:wal_colors = readfile(s:fn)
+endif
 
 " set t_Co=16
 exe 'hi Normal guibg=NONE guifg='.g:wal_colors[7]

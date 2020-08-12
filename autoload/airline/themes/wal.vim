@@ -1,4 +1,11 @@
-if (g:wal_colors == []) | call WalSetRgbColors() | endif
+if (! exists('g:wal_colors'))
+  let s:fn = expand('$HOME/.cache/wal/colors')
+  if ! filereadable(s:fn)
+    echoe "[" . s:fn . "] not readable"
+    finish
+  endif
+  let g:wal_colors = readfile(s:fn)
+endif
 
 " wal Airline
 let g:airline#themes#wal#palette = {}
