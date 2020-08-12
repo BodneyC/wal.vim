@@ -5,16 +5,18 @@
 " Last Change: 2017/10/28 12:21:04.
 " =============================================================================
 
-let s:black = [ '', 232 ]
-let s:gray = [ '', 0 ]
-let s:white = [ '', 7 ]
-let s:darkblue = [ '', 4 ]
-let s:cyan = [ '', 6 ]
-let s:green = [ '', 2 ]
-let s:orange = [ '', 5 ]
-let s:purple = [ '', 1 ]
-let s:red = [ '', 1 ]
-let s:yellow = [ '', 3 ]
+if (g:wal_colors == []) | call WalSetRgbColors() | endif
+
+let s:black = [ g:wal_colors[8], 232 ]
+let s:gray = [ g:wal_colors[0], 0 ]
+let s:white = [ g:wal_colors[7], 7 ]
+let s:darkblue = [ g:wal_colors[4], 4 ]
+let s:cyan = [ g:wal_colors[6], 6 ]
+let s:green = [ g:wal_colors[2], 2 ]
+let s:orange = [ g:wal_colors[5], 5 ]
+let s:purple = [ g:wal_colors[1], 1 ]
+let s:red = [ g:wal_colors[1], 1 ]
+let s:yellow = [ g:wal_colors[3], 3 ]
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 let s:p.normal.left = [ [ s:black, s:purple ], [ s:cyan, s:gray ] ]
