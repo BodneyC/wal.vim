@@ -15,182 +15,189 @@ let g:colors_name = 'wal'
 
 " highlight groups {{{
 
+let fn = expand('$HOME/.cache/wal/colors')
+if ! filereadable(fn)
+  echoe "[" . fn . "] not readable"
+  finish
+endif
+let colors = readfile(fn)
+
 " set t_Co=16
-hi Normal ctermbg=NONE ctermfg=7
-hi NonText ctermbg=NONE ctermfg=0
-hi Comment ctermbg=NONE ctermfg=8
-hi Conceal ctermbg=NONE
-hi Constant ctermbg=NONE ctermfg=3
-hi Error ctermbg=1 ctermfg=7
-hi Identifier ctermbg=NONE ctermfg=1 cterm=BOLD
-hi Ignore ctermbg=8 ctermfg=0
-hi PreProc ctermbg=NONE ctermfg=3
-hi Special ctermbg=NONE ctermfg=6
-hi Statement ctermbg=NONE ctermfg=1
-hi String ctermbg=NONE ctermfg=2
-hi Number ctermbg=NONE ctermfg=3
-hi Todo ctermbg=2 ctermfg=0
-hi Type ctermbg=NONE ctermfg=3
-hi Underlined ctermbg=NONE ctermfg=1 cterm=underline
-hi StatusLine ctermbg=7 ctermfg=0
-hi StatusLineNC ctermbg=8 ctermfg=0
-hi TabLine ctermbg=NONE ctermfg=8
-hi TabLineFill ctermbg=NONE ctermfg=8
-hi TabLineSel ctermbg=4 ctermfg=0
-hi TermCursorNC ctermbg=3 ctermfg=0
-hi VertSplit ctermbg=8 ctermfg=0
-hi Title ctermbg=NONE ctermfg=4
-hi CursorLine ctermbg=2 ctermfg=0
-hi LineNr ctermbg=NONE ctermfg=8
-hi CursorLineNr ctermbg=NONE ctermfg=8
-hi helpLeadBlank ctermbg=NONE ctermfg=7
-hi helpNormal ctermbg=NONE ctermfg=7
-hi Visual ctermbg=0 ctermfg=15 cterm=reverse term=reverse
-hi VisualNOS ctermbg=NONE ctermfg=1
-hi Pmenu ctermbg=8 ctermfg=7
-hi PmenuSbar ctermbg=6 ctermfg=7
-hi PmenuSel ctermbg=4 ctermfg=0
-hi PmenuThumb ctermbg=8 ctermfg=8
-hi FoldColumn ctermbg=NONE ctermfg=7
-hi Folded ctermbg=NONE ctermfg=8
-hi WildMenu ctermbg=2 ctermfg=0
-hi SpecialKey ctermbg=NONE ctermfg=8
-hi DiffAdd ctermbg=NONE ctermfg=2
-hi DiffChange ctermbg=NONE ctermfg=8
-hi DiffDelete ctermbg=NONE ctermfg=1
-hi DiffText ctermbg=NONE ctermfg=4
-hi IncSearch ctermbg=3 ctermfg=0
-hi Search ctermbg=3 ctermfg=0
-hi Directory ctermbg=NONE ctermfg=4
-hi MatchParen ctermbg=1 ctermfg=8
-hi ColorColumn ctermbg=4 ctermfg=0
-hi signColumn ctermbg=NONE ctermfg=4
-hi ErrorMsg ctermbg=NONE ctermfg=8
-hi ModeMsg ctermbg=NONE ctermfg=2
-hi MoreMsg ctermbg=NONE ctermfg=2
-hi Question ctermbg=NONE ctermfg=4
-hi WarningMsg ctermbg=1 ctermfg=0
-hi Cursor ctermbg=NONE ctermfg=8
-hi Structure ctermbg=NONE ctermfg=5
-hi CursorColumn ctermbg=8 ctermfg=7
-hi ModeMsg ctermbg=NONE ctermfg=7
-hi SpellBad ctermbg=NONE ctermfg=1 cterm=underline
-hi SpellCap ctermbg=NONE ctermfg=4 cterm=underline
-hi SpellLocal ctermbg=NONE ctermfg=5 cterm=underline
-hi SpellRare ctermbg=NONE ctermfg=6 cterm=underline
-hi Boolean ctermbg=NONE ctermfg=5
-hi Character ctermbg=NONE ctermfg=1
-hi Conditional ctermbg=NONE ctermfg=5
-hi Define ctermbg=NONE ctermfg=5
-hi Delimiter ctermbg=NONE ctermfg=5
-hi Float ctermbg=NONE ctermfg=5
-hi Include ctermbg=NONE ctermfg=4
-hi Keyword ctermbg=NONE ctermfg=5
-hi Label ctermbg=NONE ctermfg=3
-hi Operator ctermbg=NONE ctermfg=7
-hi Repeat ctermbg=NONE ctermfg=3
-hi SpecialChar ctermbg=NONE ctermfg=5
-hi Tag ctermbg=NONE ctermfg=3
-hi Typedef ctermbg=NONE ctermfg=3
-hi vimUserCommand ctermbg=NONE ctermfg=1 cterm=BOLD
+exe 'hi Normal guibg=NONE guifg='.colors[7]
+exe 'hi NonText guibg=NONE guifg='.colors[0]
+exe 'hi Comment guibg=NONE guifg='.colors[8]
+hi Conceal guibg=NONE
+exe 'hi Constant guibg=NONE guifg='.colors[3]
+exe 'hi Error guibg='.colors[1].' guifg='.colors[7]
+exe 'hi Identifier guibg=NONE guifg='.colors[1].' gui=BOLD'
+exe 'hi Ignore guibg='.colors[8].' guifg='.colors[0]
+exe 'hi PreProc guibg=NONE guifg='.colors[3]
+exe 'hi Special guibg=NONE guifg='.colors[6]
+exe 'hi Statement guibg=NONE guifg='.colors[1]
+exe 'hi String guibg=NONE guifg='.colors[2]
+exe 'hi Number guibg=NONE guifg='.colors[3]
+exe 'hi Todo guibg='.colors[2].' guifg='.colors[0]
+exe 'hi Type guibg=NONE guifg='.colors[3]
+exe 'hi Underlined guibg=NONE guifg='.colors[1].' gui=underline'
+exe 'hi StatusLine guibg='.colors[7].' guifg='.colors[0]
+exe 'hi StatusLineNC guibg='.colors[8].' guifg='.colors[0]
+exe 'hi TabLine guibg=NONE guifg='.colors[8]
+exe 'hi TabLineFill guibg=NONE guifg='.colors[8]
+exe 'hi TabLineSel guibg='.colors[4].' guifg='.colors[0]
+exe 'hi TermCursorNC guibg='.colors[3].' guifg='.colors[0]
+exe 'hi VertSplit guibg='.colors[8].' guifg='.colors[0]
+exe 'hi Title guibg=NONE guifg='.colors[4]
+exe 'hi CursorLine guibg='.colors[2].' guifg='.colors[0]
+exe 'hi LineNr guibg=NONE guifg='.colors[8]
+exe 'hi CursorLineNr guibg=NONE guifg='.colors[8]
+exe 'hi helpLeadBlank guibg=NONE guifg='.colors[7]
+exe 'hi helpNormal guibg=NONE guifg='.colors[7]
+exe 'hi Visual guibg='.colors[0].' guifg='.colors[15].' gui=reverse term=reverse'
+exe 'hi VisualNOS guibg=NONE guifg='.colors[1]
+exe 'hi Pmenu guibg='.colors[8].' guifg='.colors[7]
+exe 'hi PmenuSbar guibg='.colors[6].' guifg='.colors[7]
+exe 'hi PmenuSel guibg='.colors[4].' guifg='.colors[0]
+exe 'hi PmenuThumb guibg='.colors[8].' guifg='.colors[8]
+exe 'hi FoldColumn guibg=NONE guifg='.colors[7]
+exe 'hi Folded guibg=NONE guifg='.colors[8]
+exe 'hi WildMenu guibg='.colors[2].' guifg='.colors[0]
+exe 'hi SpecialKey guibg=NONE guifg='.colors[8]
+exe 'hi DiffAdd guibg=NONE guifg='.colors[2]
+exe 'hi DiffChange guibg=NONE guifg='.colors[8]
+exe 'hi DiffDelete guibg=NONE guifg='.colors[1]
+exe 'hi DiffText guibg=NONE guifg='.colors[4]
+exe 'hi IncSearch guibg='.colors[3].' guifg='.colors[0]
+exe 'hi Search guibg='.colors[3].' guifg='.colors[0]
+exe 'hi Directory guibg=NONE guifg='.colors[4]
+exe 'hi MatchParen guibg='.colors[1].' guifg='.colors[8]
+exe 'hi ColorColumn guibg='.colors[4].' guifg='.colors[0]
+exe 'hi signColumn guibg=NONE guifg='.colors[4]
+exe 'hi ErrorMsg guibg=NONE guifg='.colors[8]
+exe 'hi ModeMsg guibg=NONE guifg='.colors[2]
+exe 'hi MoreMsg guibg=NONE guifg='.colors[2]
+exe 'hi Question guibg=NONE guifg='.colors[4]
+exe 'hi WarningMsg guibg='.colors[1].' guifg='.colors[0]
+exe 'hi Cursor guibg=NONE guifg='.colors[8]
+exe 'hi Structure guibg=NONE guifg='.colors[5]
+exe 'hi CursorColumn guibg='.colors[8].' guifg='.colors[7]
+exe 'hi ModeMsg guibg=NONE guifg='.colors[7]
+exe 'hi SpellBad guibg=NONE guifg='.colors[1].' gui=underline'
+exe 'hi SpellCap guibg=NONE guifg='.colors[4].' gui=underline'
+exe 'hi SpellLocal guibg=NONE guifg='.colors[5].' gui=underline'
+exe 'hi SpellRare guibg=NONE guifg='.colors[6].' gui=underline'
+exe 'hi Boolean guibg=NONE guifg='.colors[5]
+exe 'hi Character guibg=NONE guifg='.colors[1]
+exe 'hi Conditional guibg=NONE guifg='.colors[5]
+exe 'hi Define guibg=NONE guifg='.colors[5]
+exe 'hi Delimiter guibg=NONE guifg='.colors[5]
+exe 'hi Float guibg=NONE guifg='.colors[5]
+exe 'hi Include guibg=NONE guifg='.colors[4]
+exe 'hi Keyword guibg=NONE guifg='.colors[5]
+exe 'hi Label guibg=NONE guifg='.colors[3]
+exe 'hi Operator guibg=NONE guifg='.colors[7]
+exe 'hi Repeat guibg=NONE guifg='.colors[3]
+exe 'hi SpecialChar guibg=NONE guifg='.colors[5]
+exe 'hi Tag guibg=NONE guifg='.colors[3]
+exe 'hi Typedef guibg=NONE guifg='.colors[3]
+exe 'hi vimUserCommand guibg=NONE guifg='.colors[1].' gui=BOLD'
     hi link vimMap vimUserCommand
     hi link vimLet vimUserCommand
     hi link vimCommand vimUserCommand
     hi link vimFTCmd vimUserCommand
     hi link vimAutoCmd vimUserCommand
     hi link vimNotFunc vimUserCommand
-hi vimNotation ctermbg=NONE ctermfg=4
-hi vimMapModKey ctermbg=NONE ctermfg=4
-hi vimBracket ctermbg=NONE ctermfg=7
-hi vimCommentString ctermbg=NONE ctermfg=8
-hi htmlLink ctermbg=NONE ctermfg=1 cterm=underline
-hi htmlBold ctermbg=NONE ctermfg=3 cterm=BOLD
-hi htmlItalic ctermbg=NONE ctermfg=5
-hi htmlEndTag ctermbg=NONE ctermfg=7
-hi htmlTag ctermbg=NONE ctermfg=7
-hi htmlTagName ctermbg=NONE ctermfg=1 cterm=BOLD
-hi htmlH1 ctermbg=NONE ctermfg=7
+exe 'hi vimNotation guibg=NONE guifg='.colors[4]
+exe 'hi vimMapModKey guibg=NONE guifg='.colors[4]
+exe 'hi vimBracket guibg=NONE guifg='.colors[7]
+exe 'hi vimCommentString guibg=NONE guifg='.colors[8]
+exe 'hi htmlLink guibg=NONE guifg='.colors[1].' gui=underline'
+exe 'hi htmlBold guibg=NONE guifg='.colors[3].' gui=BOLD'
+exe 'hi htmlItalic guibg=NONE guifg='.colors[5]
+exe 'hi htmlEndTag guibg=NONE guifg='.colors[7]
+exe 'hi htmlTag guibg=NONE guifg='.colors[7]
+exe 'hi htmlTagName guibg=NONE guifg='.colors[1].' gui=BOLD'
+exe 'hi htmlH1 guibg=NONE guifg='.colors[7]
     hi link htmlH2 htmlH1
     hi link htmlH3 htmlH1
     hi link htmlH4 htmlH1
     hi link htmlH5 htmlH1
     hi link htmlH6 htmlH1
-hi cssMultiColumnAttr ctermbg=NONE ctermfg=2
+exe 'hi cssMultiColumnAttr guibg=NONE guifg='.colors[2]
     hi link cssFontAttr cssMultiColumnAttr
     hi link cssFlexibleBoxAttr cssMultiColumnAttr
-hi cssBraces ctermbg=NONE ctermfg=7
+exe 'hi cssBraces guibg=NONE guifg='.colors[7]
     hi link cssAttrComma cssBraces
-hi cssValueLength ctermbg=NONE ctermfg=7
-hi cssUnitDecorators ctermbg=NONE ctermfg=7
-hi cssValueNumber ctermbg=NONE ctermfg=7
+exe 'hi cssValueLength guibg=NONE guifg='.colors[7]
+exe 'hi cssUnitDecorators guibg=NONE guifg='.colors[7]
+exe 'hi cssValueNumber guibg=NONE guifg='.colors[7]
     hi link cssValueLength cssValueNumber
-hi cssNoise ctermbg=NONE ctermfg=8
-hi cssTagName ctermbg=NONE ctermfg=1
-hi cssFunctionName ctermbg=NONE ctermfg=4
-hi scssSelectorChar ctermbg=NONE ctermfg=7
-hi scssAttribute ctermbg=NONE ctermfg=7
+exe 'hi cssNoise guibg=NONE guifg='.colors[8]
+exe 'hi cssTagName guibg=NONE guifg='.colors[1]
+exe 'hi cssFunctionName guibg=NONE guifg='.colors[4]
+exe 'hi scssSelectorChar guibg=NONE guifg='.colors[7]
+exe 'hi scssAttribute guibg=NONE guifg='.colors[7]
     hi link scssDefinition cssNoise
-hi sassidChar ctermbg=NONE ctermfg=1
-hi sassClassChar ctermbg=NONE ctermfg=5
-hi sassInclude ctermbg=NONE ctermfg=5
-hi sassMixing ctermbg=NONE ctermfg=5
-hi sassMixinName ctermbg=NONE ctermfg=4
-hi javaScript ctermbg=NONE ctermfg=7
-hi javaScriptBraces ctermbg=NONE ctermfg=7
-hi javaScriptNumber ctermbg=NONE ctermfg=5
-hi markdownH1 ctermbg=NONE ctermfg=7
+exe 'hi sassidChar guibg=NONE guifg='.colors[1]
+exe 'hi sassClassChar guibg=NONE guifg='.colors[5]
+exe 'hi sassInclude guibg=NONE guifg='.colors[5]
+exe 'hi sassMixing guibg=NONE guifg='.colors[5]
+exe 'hi sassMixinName guibg=NONE guifg='.colors[4]
+exe 'hi javaScript guibg=NONE guifg='.colors[7]
+exe 'hi javaScriptBraces guibg=NONE guifg='.colors[7]
+exe 'hi javaScriptNumber guibg=NONE guifg='.colors[5]
+exe 'hi markdownH1 guibg=NONE guifg='.colors[7]
     hi link markdownH2 markdownH1
     hi link markdownH3 markdownH1
     hi link markdownH4 markdownH1
     hi link markdownH5 markdownH1
     hi link markdownH6 markdownH1
-hi markdownAutomaticLink ctermbg=NONE ctermfg=2 cterm=underline
+exe 'hi markdownAutomaticLink guibg=NONE guifg='.colors[2].' gui=underline'
     hi link markdownUrl markdownAutomaticLink
-hi markdownError ctermbg=NONE ctermfg=7
-hi markdownCode ctermbg=NONE ctermfg=3
-hi markdownCodeBlock ctermbg=NONE ctermfg=3
-hi markdownCodeDelimiter ctermbg=NONE ctermfg=5
-hi markdownItalic cterm=Italic
-hi markdownBold cterm=Bold
-hi xdefaultsValue ctermbg=NONE ctermfg=7
-hi rubyInclude ctermbg=NONE ctermfg=4
-hi rubyDefine ctermbg=NONE ctermfg=5
-hi rubyFunction ctermbg=NONE ctermfg=4
-hi rubyStringDelimiter ctermbg=NONE ctermfg=2
-hi rubyInteger ctermbg=NONE ctermfg=3
-hi rubyAttribute ctermbg=NONE ctermfg=4
-hi rubyConstant ctermbg=NONE ctermfg=3
-hi rubyInterpolation ctermbg=NONE ctermfg=2
-hi rubyInterpolationDelimiter ctermbg=NONE ctermfg=3
-hi rubyRegexp ctermbg=NONE ctermfg=6
-hi rubySymbol ctermbg=NONE ctermfg=2
-hi rubyTodo ctermbg=NONE ctermfg=8
-hi rubyRegexpAnchor ctermbg=NONE ctermfg=7
+exe 'hi markdownError guibg=NONE guifg='.colors[7]
+exe 'hi markdownCode guibg=NONE guifg='.colors[3]
+exe 'hi markdownCodeBlock guibg=NONE guifg='.colors[3]
+exe 'hi markdownCodeDelimiter guibg=NONE guifg='.colors[5]
+hi markdownItalic gui=Italic
+hi markdownBold gui=Bold
+exe 'hi xdefaultsValue guibg=NONE guifg='.colors[7]
+exe 'hi rubyInclude guibg=NONE guifg='.colors[4]
+exe 'hi rubyDefine guibg=NONE guifg='.colors[5]
+exe 'hi rubyFunction guibg=NONE guifg='.colors[4]
+exe 'hi rubyStringDelimiter guibg=NONE guifg='.colors[2]
+exe 'hi rubyInteger guibg=NONE guifg='.colors[3]
+exe 'hi rubyAttribute guibg=NONE guifg='.colors[4]
+exe 'hi rubyConstant guibg=NONE guifg='.colors[3]
+exe 'hi rubyInterpolation guibg=NONE guifg='.colors[2]
+exe 'hi rubyInterpolationDelimiter guibg=NONE guifg='.colors[3]
+exe 'hi rubyRegexp guibg=NONE guifg='.colors[6]
+exe 'hi rubySymbol guibg=NONE guifg='.colors[2]
+exe 'hi rubyTodo guibg=NONE guifg='.colors[8]
+exe 'hi rubyRegexpAnchor guibg=NONE guifg='.colors[7]
     hi link rubyRegexpQuantifier rubyRegexpAnchor
-hi pythonOperator ctermbg=NONE ctermfg=5
-hi pythonFunction ctermbg=NONE ctermfg=4
-hi pythonRepeat ctermbg=NONE ctermfg=5
-hi pythonStatement ctermbg=NONE ctermfg=1 cterm=Bold
-hi pythonBuiltIn ctermbg=NONE ctermfg=4
-hi phpMemberSelector ctermbg=NONE ctermfg=7
-hi phpComparison ctermbg=NONE ctermfg=7
-hi phpParent ctermbg=NONE ctermfg=7
-hi cOperator ctermbg=NONE ctermfg=6
-hi cPreCondit ctermbg=NONE ctermfg=5
-hi SignifySignAdd ctermbg=NONE ctermfg=2
-hi SignifySignChange ctermbg=NONE ctermfg=4
-hi SignifySignDelete ctermbg=NONE ctermfg=1
-hi NERDTreeDirSlash ctermbg=NONE ctermfg=4
-hi NERDTreeExecFile ctermbg=NONE ctermfg=7
-hi ALEErrorSign ctermbg=NONE ctermfg=1
-hi ALEWarningSign ctermbg=NONE ctermfg=3
-hi ALEError ctermbg=NONE ctermfg=1
-hi ALEWarning ctermbg=NONE ctermfg=3
+exe 'hi pythonOperator guibg=NONE guifg='.colors[5]
+exe 'hi pythonFunction guibg=NONE guifg='.colors[4]
+exe 'hi pythonRepeat guibg=NONE guifg='.colors[5]
+exe 'hi pythonStatement guibg=NONE guifg='.colors[1].' gui=Bold'
+exe 'hi pythonBuiltIn guibg=NONE guifg='.colors[4]
+exe 'hi phpMemberSelector guibg=NONE guifg='.colors[7]
+exe 'hi phpComparison guibg=NONE guifg='.colors[7]
+exe 'hi phpParent guibg=NONE guifg='.colors[7]
+exe 'hi cOperator guibg=NONE guifg='.colors[6]
+exe 'hi cPreCondit guibg=NONE guifg='.colors[5]
+exe 'hi SignifySignAdd guibg=NONE guifg='.colors[2]
+exe 'hi SignifySignChange guibg=NONE guifg='.colors[4]
+exe 'hi SignifySignDelete guibg=NONE guifg='.colors[1]
+exe 'hi NERDTreeDirSlash guibg=NONE guifg='.colors[4]
+exe 'hi NERDTreeExecFile guibg=NONE guifg='.colors[7]
+exe 'hi ALEErrorSign guibg=NONE guifg='.colors[1]
+exe 'hi ALEWarningSign guibg=NONE guifg='.colors[3]
+exe 'hi ALEError guibg=NONE guifg='.colors[1]
+exe 'hi ALEWarning guibg=NONE guifg='.colors[3]
 
 " }}}
 
 " Plugin options {{{
 
-let g:limelight_conceal_ctermfg = 8
+let g:limelight_conceal_guifg = 8
 
 " }}}
